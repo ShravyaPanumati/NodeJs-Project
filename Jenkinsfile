@@ -19,7 +19,7 @@ pipeline {
         stage("Git Checkout") {
             steps {
                 echo "Retrieving Code.."
-                git 'https://github.com/DeepakChandMarthala/NodeJs-Project.git'
+                git 'https://github.com/ShravyaPanumati/NodeJs-Project.git'
             }
         }
 

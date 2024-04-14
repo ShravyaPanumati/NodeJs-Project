@@ -5,7 +5,7 @@ pipeline {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
         REGISTRY = "shravyapanumati/dockertimages"
         TAG = "latest"
-        REGISTRY_CREDENTIAL = 'docker-login' // This should be the ID of the credentials stored in Jenkins
+        REGISTRY_CREDENTIAL = 'docker' // This should be the ID of the credentials stored in Jenkins
         // Ensure you store DOCKER_USERNAME and PASSWORD in Jenkins credentials and not here directly
         DOCKER_IMAGE = ''
         // Comment out PATH variable for clarity in this example; make sure to set it properly as needed

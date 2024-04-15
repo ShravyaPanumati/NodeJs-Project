@@ -57,7 +57,13 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE}"
             }
         }
-    
+
+        stage("Deploying") {
+            steps {
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 8000:8000 -d ${registry}:${tag} '
+            }
+  
+            }
 
         
 

@@ -41,50 +41,36 @@ const puppeteer = require('puppeteer');
   }
 })();
 */
+const axios = require('axios');
+const assert = require('assert');
 
-const { Builder, By, Key, until } = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
+// Define the URL of your deployed Node.js application
+const url = 'http://100.25.196.208:3000';
 
-// Set up Chrome options (optional)
-const chromeOptions = new chrome.Options();
-chromeOptions.addArguments('--headless'); // Run Chrome in headless mode (without GUI)
-
-// Create a new WebDriver instance
-const driver = new Builder()
-    .forBrowser('chrome')
-    .setChromeOptions(chromeOptions)
-    .build();
-
-// Function to run the Selenium tests
-async function runTests() {
+// Function to perform a simple text presence check
+async function testTextPresence() {
     try {
-        // Navigate to the deployed application URL
-        await driver.get('http://100.25.196.208:3000');
+        const response = await axios.get(url);
+        const responseBody = response.data;
 
-        // Wait until the page title contains 'Welcome'
-        await driver.wait(until.titleContains('Welcome'), 5000);
+        // Assert that the response body contains the expected text
+        assert(responseBody.includes('Welcome to Our DevOps Project'), 'Expected text not found');
 
-        // Find and assert the presence of elements on the page
-        const pageTitle = await driver.findElement(By.css('h1')).getText();
-        console.log('Page Title:', pageTitle);
-
-        const projectList = await driver.findElements(By.css('ul li'));
-        console.log('Project Members:');
-        for (let member of projectList) {
-            const memberName = await member.getText();
-            console.log('-', memberName);
-        }
-
-
-        // Close the WebDriver session
-        await driver.quit();
+        console.log('Text presence test passed!');
     } catch (error) {
-        console.error('An error occurred:', error);
-        // Close the WebDriver session in case of an error
-        await driver.quit();
+        console.error('Text presence test failed:', error.message);
     }
 }
 
 // Execute the test function
-runTests();
+testTextPresence();
+
+
+
+
+
+
+
+
+
 

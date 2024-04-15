@@ -67,7 +67,7 @@ pipeline {
             steps{
                 script{
                     echo "testing"
-                    sh 'npm install selenium-webdriver'
+                    sh 'npm install axios assert'
                     sh "node test.js"
                 }
                 

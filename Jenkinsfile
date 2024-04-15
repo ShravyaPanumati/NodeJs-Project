@@ -67,6 +67,7 @@ pipeline {
             steps{
                 script{
                     echo "testing"
+                    sh "npm install puppeteer"
                     sh "node test.js"
                 }
                 

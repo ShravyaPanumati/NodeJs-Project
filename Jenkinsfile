@@ -60,7 +60,7 @@ pipeline {
 
         stage("Deploying") {
             steps {
-                sh 'sudo docker run --name ${CONTAINER_NAME} -p 8000:8000 -d ${registry}:${tag} '
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 3000:3000 -d ${REGISTRY}:${TAG} '
             }
   
             }

@@ -67,7 +67,7 @@ pipeline {
             steps{
                 script{
                     echo "testing"
-                    sh "npm install puppeteer"
+                    sh 'npm install selenium-webdriver'
                     sh "node test.js"
                 }
                 

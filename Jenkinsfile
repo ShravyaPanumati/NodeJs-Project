@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
-        REGISTRY = "deepakchandmarthala/nodejs-project"
+        REGISTRY = "shravyapanumati/nodejs-project"
         TAG = "latest"
         REGISTRY_CREDENTIAL = 'Docker-Token' 
         DOCKER_IMAGE = ''
@@ -19,7 +19,7 @@ pipeline {
         stage("Git Checkout") {
             steps {
                 echo "Retrieving Code.."
-                git 'https://github.com/DeepakChandMarthala/NodeJs-Project.git'
+                git 'https://github.com/ShravyaPanumati/NodeJs-Project.git'
             }
         }
 
